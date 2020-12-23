@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { CircularProgress, ThemeProvider } from "@material-ui/core";
+import { SnackbarProvider } from "notistack";
+import { Suspense, useState } from "react";
+import { useRoutes } from "react-router-dom";
+import UserContext from "./context/UserContext";
+import routes from "./routes";
+import { getCurrentUser } from "./services/authService";
+import theme from "./theme";
 
-function App() {
+const App = () => {
+  const [user, setUser] = useState(getCurrentUser());
+  const routing = useRoutes(routes(user));
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <SnackbarProvider maxSnack={3}>
+        <UserContext.Provider value={{ user, setUser }}>
+          <Suspense fallback={<CircularProgress />}>{routing}</Suspense>
+        </UserContext.Provider>
+      </SnackbarProvider>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
