@@ -44,7 +44,7 @@ const Login = () => {
   const { enqueueSnackbar: snackbar } = useSnackbar();
 
   return (
-    <Box marginY={5}>
+    <Box marginTop={10}>
       <Container maxWidth="xs">
         <Grid container spacing={2}>
           <Grid item xs={12}>
@@ -93,7 +93,9 @@ const Login = () => {
           <Grid container item justify="center">
             <Grid item xs={6}>
               {formik.isSubmitting ? (
-                <CircularProgress />
+                <Box display="flex" justifyContent="center">
+                  <CircularProgress />
+                </Box>
               ) : (
                 <StyledButton
                   fullWidth

@@ -1,6 +1,5 @@
 import {
   AppBar,
-  Box,
   Button,
   Grid,
   Link,
@@ -12,7 +11,7 @@ import Icon from "../../components/Icon";
 
 const useStyles = makeStyles((theme) => ({
   appbar: {
-    backgroundColor: "white",
+    backgroundColor: "transparent",
   },
   creator: {
     color: "#FF9C6B",
@@ -27,11 +26,13 @@ const Header = () => {
 
   return (
     <header>
-      <AppBar position="static" className={classes.appbar}>
+      <AppBar position="absolute" className={classes.appbar} elevation={0}>
         <Toolbar>
           <Grid container alignItems="center">
             <Grid item xs={2}>
-              <Icon src="logo.png" />
+              <RouterLink to="/">
+                <Icon src="logo.png" />
+              </RouterLink>
             </Grid>
             <Grid
               container

@@ -5,6 +5,9 @@ const theme = createMuiTheme({
     primary: { main: "#FF6868" },
     secondary: { main: "#4EA5F1" },
   },
+  typography: {
+    fontFamily: ["sans-serif"].join(","),
+  },
 });
 
 theme.overrides = {
