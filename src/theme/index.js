@@ -6,7 +6,7 @@ const theme = createMuiTheme({
     secondary: { main: "#4EA5F1" },
   },
   typography: {
-    fontFamily: ["sans-serif"].join(","),
+    fontFamily: ["Open Sans", "sans-serif"].join(","),
   },
 });
 

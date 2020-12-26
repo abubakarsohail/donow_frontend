@@ -1,7 +1,6 @@
 import {
   Box,
   Checkbox,
-  CircularProgress,
   Container,
   FormControlLabel,
   Grid,
@@ -44,7 +43,7 @@ const Login = () => {
   const { enqueueSnackbar: snackbar } = useSnackbar();
 
   return (
-    <Box marginTop={10}>
+    <Box sx={{ marginTop: 10 }}>
       <Container maxWidth="xs">
         <Grid container spacing={2}>
           <Grid item xs={12}>
@@ -90,22 +89,17 @@ const Login = () => {
           </Grid>
 
           {/* Login Button */}
-          <Grid container item justify="center">
+          <Grid container item justifyContent="center">
             <Grid item xs={6}>
-              {formik.isSubmitting ? (
-                <Box display="flex" justifyContent="center">
-                  <CircularProgress />
-                </Box>
-              ) : (
-                <StyledButton
-                  fullWidth
-                  variant="contained"
-                  size="large"
-                  onClick={formik.handleSubmit}
-                >
-                  Login
-                </StyledButton>
-              )}
+              <StyledButton
+                fullWidth
+                variant="contained"
+                size="large"
+                onClick={formik.handleSubmit}
+                pending={formik.isSubmitting}
+              >
+                Login
+              </StyledButton>
             </Grid>
           </Grid>
 

@@ -38,11 +38,11 @@ const useStyles = makeStyles((theme) => ({
 const CategoryBox = ({ src, title }) => {
   return (
     <Box
-      position="relative"
-      height={50}
-      width="100%"
-      borderRadius={6}
-      style={{
+      sx={{
+        position: "relative",
+        height: 50,
+        width: "100%",
+        borderRadius: 6,
         background: "#000000 0% 0% no-repeat padding-box",
       }}
     >
@@ -57,15 +57,17 @@ const CategoryBox = ({ src, title }) => {
         }}
       />
       <Box
-        position="absolute"
-        top={0}
-        left={0}
-        width="100%"
-        height="100%"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        color="white"
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          color: "white",
+        }}
       >
         {title}
       </Box>
@@ -79,7 +81,7 @@ const LandingPage = () => {
   return (
     <>
       <Hero src="landingpage.png">
-        <Box width="100%" height="100%">
+        <Box sx={{ width: "100%", height: "100%" }}>
           <Container maxWidth="md" style={{ height: "100%" }}>
             <Grid
               container
@@ -163,9 +165,9 @@ const LandingPage = () => {
       {/* Workshops */}
 
       <Container maxWidth="md">
-        <Box marginY={5}>
+        <Box sx={{ marginY: 5 }}>
           <Typography variant="h3">Designing</Typography>
-          <Box marginTop={2}>
+          <Box sx={{ marginTop: 2 }}>
             <Grid container spacing={2}>
               {[1, 2, 3, 4].map((item) => (
                 <Grid item xs={3}>
@@ -186,9 +188,9 @@ const LandingPage = () => {
 
       {/* Workshops */}
       <Container maxWidth="md">
-        <Box marginY={5} flexWrap="noWrap">
+        <Box sx={{ marginY: 5 }}>
           <Typography variant="h3">Designing</Typography>
-          <Box marginTop={2}>
+          <Box sx={{ marginTop: 2 }}>
             <Grid container spacing={2}>
               {[1, 2, 3, 4].map((item) => (
                 <Grid item xs={3}>

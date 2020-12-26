@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     borderRadius: 24,
+    color: "white",
   },
 }));
 
@@ -26,10 +27,10 @@ const Header = () => {
 
   return (
     <header>
-      <AppBar position="absolute" className={classes.appbar} elevation={0}>
+      <AppBar position="static" className={classes.appbar} elevation={2}>
         <Toolbar>
           <Grid container alignItems="center">
-            <Grid item xs={2}>
+            <Grid item xs={1}>
               <RouterLink to="/">
                 <Icon src="logo.png" />
               </RouterLink>
@@ -37,9 +38,9 @@ const Header = () => {
             <Grid
               container
               item
-              xs={10}
+              xs={11}
               spacing={2}
-              justify="flex-end"
+              justifyContent="flex-end"
               alignItems="center"
             >
               <Grid item>
@@ -53,6 +54,7 @@ const Header = () => {
               </Grid>
               <Grid item>
                 <Button
+                  size="large"
                   variant="contained"
                   color="secondary"
                   className={classes.button}

@@ -1,5 +1,5 @@
 import { withStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+import { LoadingButton } from "@material-ui/lab";
 
 const StyledButton = withStyles({
   root: {
@@ -10,6 +10,6 @@ const StyledButton = withStyles({
     padding: 8,
     fontWeight: "bold",
   },
-})(Button);
+})(LoadingButton);
 
 export default StyledButton;

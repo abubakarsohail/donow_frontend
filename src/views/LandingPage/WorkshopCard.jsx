@@ -5,22 +5,22 @@ const WorkshopCard = ({ src, rating, number, category, title, price }) => {
   return (
     <Box>
       <Box
-        position="relative"
-        height={250}
-        width="100%"
-        borderRadius={14}
-        style={{
+        sx={{
+          position: "relative",
+          height: 250,
+          width: "100%",
+          borderRadius: 14,
           backgroundImage: `url(${src})`,
           backgroundSize: "100% 100%",
         }}
       >
-        <Box position="absolute" top={0} right={2}>
+        <Box sx={{ position: "absolute", top: 0, right: 2 }}>
           <IconButton>
             <Favorite />
           </IconButton>
         </Box>
       </Box>
-      <Box display="flex" alignItems="center">
+      <Box sx={{ display: "flex", alignItems: "center" }}>
         <Star />
         {rating}
         <span>({number})</span>
