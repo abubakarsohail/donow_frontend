@@ -7,5 +7,9 @@ export const getCategories = () => {
 };
 
 export const createWorkshop = (values) => {
-  return http.post(apiEndpoint + "list", { ...values });
+  return http.post(apiEndpoint + "list", values, {
+    headers: {
+      "content-type": "multipart/form-data",
+    },
+  });
 };

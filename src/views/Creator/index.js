@@ -23,7 +23,7 @@ import { createWorkshop, getCategories } from "../../services/workshopService";
 import { useSnackbar } from "notistack";
 
 const Creator = () => {
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(new Date().toISOString());
   const [categories, setCategories] = useState([]);
   const { enqueueSnackbar: snackbar } = useSnackbar();
 
@@ -46,7 +46,7 @@ const Creator = () => {
       deadline: date,
       has_toolkit: false,
       language: "default",
-      cover_image: "",
+      cover_image_path: "",
       cost_free_lesson: "undefined",
       no_of_lessons: 1,
     },
@@ -55,8 +55,12 @@ const Creator = () => {
       description: Yup.string().required("Required"),
     }),
     onSubmit: async (values) => {
+      let formData = new FormData();
+      for (var key in values) {
+        formData.append(key, values[key]);
+      }
       try {
-        await createWorkshop(values);
+        await createWorkshop(formData);
         snackbar("Workshop Created Successfully.", { variant: "success" });
         formik.resetForm();
       } catch (ex) {
@@ -319,7 +323,7 @@ const Creator = () => {
                   variant="inline"
                   inputVariant="outlined"
                   value={date}
-                  onChange={(newDate) => setDate(newDate)}
+                  onChange={(newDate) => setDate(newDate.toISOString())}
                   renderInput={(params) => (
                     <TextField placeholder="Select Date" {...params} />
                   )}
@@ -332,7 +336,16 @@ const Creator = () => {
               <Typography color="primary" gutterBottom>
                 Add Images
               </Typography>
-              <input type="file" {...formik.getFieldProps("cover_image")} />
+              <input
+                type="file"
+                name="cover_image_path"
+                onChange={(event) =>
+                  formik.setFieldValue(
+                    "cover_image_path",
+                    event.currentTarget.files[0]
+                  )
+                }
+              />
               {/* <Grid container spacing={2} justifyContent="space-between">
                 <Grid item xs={3}>
                   <Box
